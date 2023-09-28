@@ -10,7 +10,7 @@
 <body style="margin: 0 auto;">
     <?php
     include_once("VUES/v_prestationProduits.php");
-    include_once("VUES/v_meilleursOffres");
+    include_once("VUES/v_meilleursOffres.php");
     include_once("VUES/v_choisirRDetail.php");
     include_once("VUES/v_contact.php"); 
     ?>

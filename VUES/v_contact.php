@@ -24,6 +24,27 @@
                 <p>+590 690 00 00 00</p>
             </li>
         </ul>
+        <a style="text-decoration: none;" href="#"><img style="width: 50px;" src="./ASSETS/IMAGES/icon-instagram.png" alt=""></a>
+        <div style="border-top: 1px solid #8e8d92; margin-top: 5vh;">
+            <ul style="display: flex; list-style-type: none; width: 100%; height: 20vh; justify-content: space-around; padding-top: 5vh;">
+                <li>
+                    <a style="text-decoration: none; color: white;" href="">
+                        <p>Politique de cookies</p>
+                    </a>
+                </li>
+                <li>
+                    <a style="text-decoration: none; color: white;" href="">
+                        <p>Mentions légales</p>
+                    </a>
+                </li>
+                <li>
+                    <a style="text-decoration: none; color: white;" href="">
+                        <p>Politique de confidentialité</p>
+                    </a>
+                </li>
+            </ul>
+            <p style="padding-bottom: 7vh;">© 2035 par Royal Detailing. Créé par CodéLean</p>
+        </div>
     </section>
 </body>
 </html>

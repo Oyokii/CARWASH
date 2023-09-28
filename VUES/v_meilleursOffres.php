@@ -7,9 +7,9 @@
     <title>Document</title>
 </head>
 <body>
-    <section class="" style="height: 100vh; width: 100%; margin: 0 auto; margin-top: 20vh; padding-left: 13.5%;">
+    <section class="" style="height: 110vh; width: 100%; margin: 0 auto; margin-top: 20vh; padding-left: 13.5%;">
         <h1 style="position:absolute; font-size: 70px; padding-top: 5vh; padding-left: 20%;">MEILLEURE OFFRES</h1>
-        <ul class="d-flex" style="list-style-type: none; width: 90%; flex: 1; flex-wrap: wrap; padding-top: 20vh;">
+        <ul class="d-flex" style="list-style-type: none; width: 80%; flex: 1; padding-top: 20vh; justify-content: space-around;">
             <li class="p-5">
                 <div class="card" style="width: 20rem;">
                     <img src="./ASSETS/IMAGES/imgvwati.jpeg" class="card-img-top" alt="...">
@@ -41,7 +41,7 @@
                 </div>
             </li>
         </ul>
-        <button type="button" style="margin-left:35%; border-width: 0; background-color: #000000; text-align: center; color: rgb(148, 148, 148); width: 250px;">
+        <button type="button" style=" margin-left: 33%; border-width: 0; background-color: #000000; text-align: center; color: rgb(148, 148, 148); width: 250px;">
             <h3 style="font-size: 20px;">VOIR TOUTES NOS OFFRES</h3>
         </button>
     </section>
