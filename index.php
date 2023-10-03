@@ -22,7 +22,13 @@ switch($uc)
     case 'voirPrestationProduits':
     {
         include("CONTROLEURS/c_voirPrestaProduits.php");
+        break;
     }
 
+    case 'administrer':
+        {
+            include("CONTROLEURS/c_connexion.php");
+            break;
+        }
 }
 ?>

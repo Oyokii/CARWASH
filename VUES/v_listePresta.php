@@ -6,33 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    table,
+    td {
+    border: 1px solid #333;
+    }
+
+    thead,
+    tfoot {
+    background-color: #333;
+    color: #fff;
+    }
+</style>
 <body>
-    <section>
+    <h3>Les prestations</h3>
     <?php
         foreach($lesPrestations as $laPrestation)
         {
     ?>
-        <ul class="grid" style=" list-style-type: none; text-align: center;">
-            <li>
-                <div class="card" style="width: 20rem;">
-                    <?php
-                        echo "<img src='".$laPrestation['imagePresta']."'>";
-                    ?>
-                    <div class="card-body">
-                    <?php
-                        echo "<h5.card-title>".($laPrestation['nomPresta'].'</h5> <br><br>');
-                        echo "<p.card-text>".($laPrestation['descriptionPresta'].'</p>');
-                        echo "<p>".($laPrestation['prixPresta'].'€ </p>');
-                    ?> 
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </li>
-        </ul>
-
+    <table>
+        <thead>
+            <tr>
+                <?php
+                    echo "<th>'".$laPrestation['nomPresta']."'</th>";
+                ?>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <?php
+                    echo "<td>'".$laPrestation['descriptionPresta']."'</td>";
+                    echo "<td>'".$laPrestation['prixPresta']."'</td>";
+                ?>
+            </tr>
+        </tbody>
+    </table>
     <?php
         }
     ?>
-    </section>
 </body>
 </html>

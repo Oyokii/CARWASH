@@ -49,5 +49,26 @@ class carwashClass
         $lesLignes = $res->fetchAll();
         return $lesLignes;
     }
+
+    public function verifConnexion($identifiant, $mdp)
+    {
+        $req="select * from admin where pseudoAdmin ='".$identifiant."' and mdpAdmin='".$mdp."'";
+        $res = carwashClass::$monPdo->query($req);
+        $unUtilisateur=$res->fetch();
+        return $unUtilisateur;
+    }
+
+    public function ajouterPrestation($idPresta,$imgPresta, $nomPresta, $descPresta, $prixPresta)
+    {
+        $req="insert into prestations VALUES('$idPresta','$imgPresta','$nomPresta','$descPresta','$prixPresta');";
+        carwashClass::$monPdo->query($req);
+    }
+
+    public function ajouterProduit($idProd,$imgProd, $nomProd, $descProd, $prixProd)
+    {
+        $req="insert into prestations VALUES('$idProd','$imgProd','$nomProd','$descProd','$prixProd');";
+        carwashClass::$monPdo->query($req);
+    }
 }
+
 ?>

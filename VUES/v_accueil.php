@@ -7,6 +7,13 @@
     <title>Document</title>
     <link rel="stylesheet" href="./ASSETS/bootstrap-5.3.2/bootstrap-5.3.2-dist/css/bootstrap.min.css">
 </head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+    *{
+        font-family: 'poppins', sans-serif;
+    }
+</style>
 <body style="margin: 0 auto;">
     <?php
     include_once("VUES/v_prestationProduits.php");
