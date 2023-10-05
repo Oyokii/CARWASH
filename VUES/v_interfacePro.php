@@ -8,9 +8,11 @@
 </head>
 <body>
     <?php
-        // include("VUES/v_listePresta.php");
-        // include("VUES/v_listeProduits.php");
-        include("VUES/v_ajouterPrestation.php");
-    ?>    
+        // include("VUES/v_ajouterPrestationProduit.php");
+    ?>
+    <?php
+        include("VUES/v_listePresta.php");
+        include("VUES/v_listeProduits.php");
+    ?>
 </body>
 </html>

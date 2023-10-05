@@ -66,7 +66,7 @@ class carwashClass
 
     public function ajouterProduit($idProd,$imgProd, $nomProd, $descProd, $prixProd)
     {
-        $req="insert into prestations VALUES('$idProd','$imgProd','$nomProd','$descProd','$prixProd');";
+        $req="insert into produits VALUES('$idProd','$imgProd','$nomProd','$descProd','$prixProd');";
         carwashClass::$monPdo->query($req);
     }
 }
