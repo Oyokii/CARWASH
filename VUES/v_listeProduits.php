@@ -106,7 +106,7 @@
     <section>
         <h3>Les prestations</h3>
         <?php
-            foreach($lesPrestations as $laPrestation)
+            foreach($lesProduits as $leProduit)
             {
         ?>
         <div class="flex-container">

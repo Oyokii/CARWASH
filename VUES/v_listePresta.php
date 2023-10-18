@@ -107,7 +107,7 @@
     <section>
     <h3>Les prestations</h3>
     <?php
-        foreach($lesPrestations as $laPrestation)
+        foreach($lesArticles as $unArticle)
         {
     ?>
     <div class="flex-container">

@@ -22,7 +22,7 @@
     include_once("VUES/v_choisirRDetail.php");
     include_once("VUES/v_contact.php"); 
     ?>
-    <link rel="stylesheet" href="./ASSETS/bootstrap-5.3.2/bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js">
+    <script src="./ASSETS/bootstrap-5.3.2/bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
 
