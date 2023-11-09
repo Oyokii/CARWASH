@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
+<section style="position: absolute;">
     <?php
         include("VUES/v_ajouterPrestationProduit.php");
     ?>
+</section>
+<section>
     <?php
-        include("VUES/v_listePresta.php");
-        // include("VUES/v_listeProduits.php");
+        // include("VUES/v_listePresta.php");
     ?>
-</body>
+</section>
 </html>

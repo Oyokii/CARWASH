@@ -18,7 +18,7 @@
     font-family: 'poppins', sans-serif;
 }
 
-body{
+.body{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -29,7 +29,7 @@ body{
     background-size: cover;
 }
 
-section{
+.section{
     position: relative;
     max-width: 400px;
     background-color: transparent;
@@ -152,66 +152,47 @@ button:hover{
     text-decoration: underline;
 }
 </style>
-    <section>
+<body class="body">
+    <section class="section">
         <form action="index.php?uc=administrer&action=ajouterPrestation" method="post">
-            <h1 style="color:#FF87E6;">Ajouter une prestation</h1>
+            <h1 style="color:#FF87E6;">Ajouter un article</h1>
             <div class="inputbox">
                 <ion-icon name="pricetag-outline"></ion-icon>
                 <input name="idPresta" type="text" required>
-                <label style="color:#3981F0;" for="">Id de la prestation</label>
+                <label style="color:#3981F0;" for="">Id de l'article</label>
             </div>
             <div class="inputbox">
                 <ion-icon name="image-outline"></ion-icon>
                 <input name="imgPresta" type="text" required>
-                <label style="color:#3981F0;" for="">Image de la prestation</label>
+                <label style="color:#3981F0;" for="">Image</label>
             </div>
             <div class="inputbox">
                 <ion-icon name="clipboard-outline"></ion-icon>
                 <input name="nomPresta" type="text" required>
-                <label style="color:#3981F0;" for="">Nom de la prestation</label>
+                <label style="color:#3981F0;" for="">Nom de l'article</label>
             </div>
             <div class="inputbox">
                 <ion-icon name="clipboard-outline"></ion-icon>
                 <input name="descPresta" type="text" required>
-                <label style="color:#3981F0;" for="">Description de la presta..</label>
+                <label style="color:#3981F0;" for="">Description</label>
             </div>
             <div class="inputbox">
                 <ion-icon name="cash-outline"></ion-icon>
                 <input name="prixPresta" type="text" required>
-                <label style="color:#3981F0;" for="">Prix de la prestation</label>
-            </div>
-            <button>Ajouter la prestation</button>
-        </form>
-    </section>
-    <section>
-        <form action="index.php?uc=administrer&action=ajouterProduit" method="post">
-            <h1 style="color:#FF87E6;">Ajouter un produit</h1>
-            <div class="inputbox">
-                <ion-icon name="pricetag-outline"></ion-icon>
-                <input name="idProd" type="text" required>
-                <label style="color:#3981F0;" for="">Id du produit</label>
-            </div>
-            <div class="inputbox">
-                <ion-icon name="image-outline"></ion-icon>
-                <input name="imgProd" type="text" required>
-                <label style="color:#3981F0;" for="">Image du produit</label>
+                <label style="color:#3981F0;" for="">Prix</label>
             </div>
             <div class="inputbox">
                 <ion-icon name="clipboard-outline"></ion-icon>
-                <input name="nomProd" type="text" required>
-                <label style="color:#3981F0;" for="">Nom du produit</label>
+                <input name="qtePresta" type="text" required>
+                <label style="color:#3981F0;" for="">Quantité</label>
             </div>
             <div class="inputbox">
                 <ion-icon name="clipboard-outline"></ion-icon>
-                <input name="descProd" type="text" required>
-                <label style="color:#3981F0;" for="">Description du produit</label>
+                <input name="typeArticle" type="text" required>
+                <label style="color:#3981F0;" for="">Son type (PE ou PO)</label>
             </div>
-            <div class="inputbox">
-                <ion-icon name="cash-outline"></ion-icon>
-                <input name="prixProd" type="text" required>
-                <label style="color:#3981F0;" for="">Prix du produit</label>
-            </div>
-            <button>Ajouter le produit</button>
+            <button type="submit">Ajouter la prestation</button>
         </form>
     </section>
+</body>
 </html>

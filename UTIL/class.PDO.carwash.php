@@ -8,11 +8,12 @@ class carwashClass
 {
     private static $serveur='mysql:host=localhost';
     private static $bdd='dbname=carwash';
-
     private static $user='root';
     private static $mdp='';
     private static $monPdo;
     private static $monPdoCarwash = null;
+    // public $monPdoArticle = new Articles($idArticle, $libelleArticle, $imageArticle, $descriptionArticle, $prixArticle, $quantiteArticle, $typeArticle, $dansPanier);
+    // public $monPdoCommande = new Commande($idCommande, $dateCommande, $listeArticles);
 
     public static function getCarwashClass()
     {
@@ -41,94 +42,202 @@ class carwashClass
         $unUtilisateur=$res->fetch();
         return $unUtilisateur;
     }
-}
 
-
-class Commande
-{
-    private $idCommande;
-    private $dateCommande;
-    
-    public $infosClass;
-
-    public $objetPanier = null;
-
-    public static function getCommande()
+    // AFFICHER LES ARTICLES
+    public function getArticleSelonType($leType)
     {
-        if(Commande::$objetPanier == null)
-        {
-            Commande::$objetPanier = new Commande();
-        }
-        return Commande::$objetPanier;
+        $req= "select * from articles where typeArticle='".$leType."'";
+        $res=carwashClass::$monPdo->query($req);
+        $lesArticles=$res->fetch();
+        return $lesArticles;
     }
 
-    private function __construct()
+    public function getArticles()
     {
-        Commande::$infosClass=new PDO(Commande::$idCommande.';'.Commande::$dateCommande);
-        Commande::$infosClass->query("SET CHARACTER SET utf8");
+        $req= "select * from articles";
+        $res=carwashClass::$monPdo->query($req);
+        $lesArticles=$res->fetch();
+        return $lesArticles;
     }
 
-    public function _destruct()
+    // public function getProduits()
+    // {
+    //     $req= "select * from articles where typeArticle= PO";
+    //     $res=carwashClass::$monPdo->query($req);
+    //     $lesArticles=$res->fetch();
+    //     return $lesArticles;
+    // }
+
+    public function getPrestations()
     {
-        Commande::$infosClass=null;
-    }
-}
-
-class Articles
-{
-    private $idArticle;
-    private $libelleArticle;
-    private $imageArticle;
-    private $descriptionArticle;
-    private $prixArticle;
-    private $quantiteArticle;
-    private $typeArticle;
-    private $dansPanier;
-
-    private $infosArticles;
-
-    private $objetArticle = null;
-
-    public static function getArticles()
-    {
-        if(Articles::$objetArticle == null)
-        {
-            Articles::$objetArticle = new Articles();
-        }
-        return Articles::$objetArticle;
+        $req= "select * from articles where typeArticle= PE";
+        $res=carwashClass::$monPdo->query($req);
+        $lesArticles=$res->fetch();
+        return $lesArticles;
     }
 
-    private function __construct()
+    // SUPPRIMER UN ARTICLE
+    public function DeleteArticle($id)
     {
-        Articles::$infosArticles=new PDO(Articles::$idArticle.';'.Articles::$libelleArticle, Articles::$imageArticle, Articles::$descriptionArticle, Articles::$prixArticle);
-        Articles::$infosArticles->query("SET CHARACTER SET utf8");
+        $req= "delete from article where idArticle = ".$id."'";
+        $res=carwashClass::$monPdo->query($req);
+        $lesArticles=$res->fetchAll();
+        return $lesArticles;
     }
 
-    public function _destruct()
+    // AJOUTER UN NOUVEL ARTICLE
+    public function CreateArticle($idArticle, $libelleArticle, $imageArticle, $descriptionArticle, $prixArticle, $quantiteArticle, $typeArticle)
     {
-        Commande::$infosClass=null;
+        $req="insert into article values ('$idArticle', '$libelleArticle', '$imageArticle', '$descriptionArticle', '$prixArticle', '$quantiteArticle', '$typeArticle')";
+        $res=carwashClass::$monPdo->query($req);
+        $lesArticles=$res->fetchAll();
+        return $lesArticles;
+
     }
 
-    public function getLesArticles()
+    // MODIFIER UN ARTICLE
+    public function UpdateArticle($idArticle, $libelleArticle, $imageArticle, $descriptionArticle, $prixArticle, $quantiteArticle, $typeArticle)
     {
-        $req = "select * from articles";
-        $res = Articles::$infosArticles->query($req);
-        $lesLignes = $res->fetchAll();
-        return $lesLignes;
+        $req="update article set idArticle = '".$idArticle."', libelleArticle= '".$libelleArticle."', imageArticle= '".$imageArticle."', descriptionArticle= '".$descriptionArticle."', prixArticle= '".$prixArticle."', quantiteArticle= '".$quantiteArticle."', typeArticle= '".$typeArticle."' where idArticle= '".$idArticle."'";
+        $res=carwashClass::$monPdo->query($req);
+        $lesArticles=$res->fetchAll();
+        return $lesArticles;
     }
 
-    public function getLesArticlesSelonValeur($valeur)
-    {
-        $req="select * from articles where ajouterPanier = '".$valeur."'";
-        $res=Articles::$infosArticles->query($req);
-        $lesLignes=$res->fetchAll();
-        return $lesLignes;
-    }
+    // AJOUTER UN NOUVEL ARTICLE A LA LISTE
+    // public function AjouterArticleListe($idArticle, $libelleArticle, $imageArticle, $descriptionArticle, $prixArticle, $quantiteArticle, $typeArticle)
+    // {
+    //     $req="select * from article where idArticle = '".$idArticle."', libelleArticle= '".$libelleArticle."', imageArticle= '".$imageArticle."', descriptionArticle= '".$descriptionArticle."', prixArticle= '".$prixArticle."', quantiteArticle= '".$quantiteArticle."', typeArticle= '".$typeArticle."' where idArticle= '".$idArticle."'";
+    // }
 
-    public function ajouterArticle($idArticle,$imageArticle, $libelleArticle, $descArticle, $prixArticle,$qteArticle ,$typeArticle ,$ajouterPanier)
+    // CALCULER LE PRIX TOTAL
+    public function PrixTotalPanier($idArticle, $prixArticle)
     {
-        $req="insert into Articletions VALUES('$idArticle','$imageArticle','$libelleArticle','$descArticle','$prixArticle','$qteArticle','$typeArticle','$ajouterPanier');";
-        Articles::$infosArticles->query($req);
+        $req= "".$idArticle."".$prixArticle."";
     }
 }
+
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- // class Articles
+// {
+//     private $idArticle;
+//     private $libelleArticle;
+//     private $imageArticle;
+//     private $descriptionArticle;
+//     private $prixArticle;
+//     private $quantiteArticle;
+//     private $typeArticle;
+//     private $dansPanier;
+
+//     private $infosArticles;
+
+//     private static $objetArticle = null;
+
+//     public static function getArticle()
+//     {
+//         if(Articles::$objetArticle == null)
+//         {
+//             Articles::$objetArticle = new Articles();
+//         }
+//         return Articles::$objetArticle;
+//     }
+
+//     private function __construct()
+//     {
+//         Articles::$infosArticles=new PDO(Articles::$idArticle.';'.Articles::$libelleArticle, Articles::$imageArticle, Articles::$descriptionArticle, Articles::$prixArticle);
+//         Articles::$infosArticles->query("SET CHARACTER SET utf8");
+//     }
+
+//     public function _construct($idArticle, $libelleArticle, $imageArticle, $descriptionArticle, $prixArticle, $quantiteArticle, $typeArticle, $dansPanier)
+//     {
+//         $this->idArticle = $idArticle;
+//         $this->libelleArticle = $libelleArticle;
+//         $this->imageArticle = $imageArticle;
+//         $this->descriptionArticle = $descriptionArticle;
+//         $this->prixArticle = $prixArticle;
+//         $this->quantiteArticle = $quantiteArticle;
+//         $this->typeArticle = $typeArticle;
+//         $this->dansPanier = $dansPanier;
+//     }
+
+//     public function _destruct()
+//     {
+//         Commande::$infosClass=null;
+//     }
+
+//     public function getIdArticle()
+//     {
+//         return $this->idArticle;
+//     }
+// } -->
+
+
+<!-- // class Commande
+// {
+//     private $idCommande;
+//     private $dateCommande;
+//     private $listeArticles;
+//     public $infosClass;
+
+//     public $objetPanier = null;
+
+//     public static function getCommande()
+//     {
+//         if(Commande::$infosClass == null)
+//         {
+//             Commande::$infosClass = new Commande();
+//         }
+//         return Commande::$infosClass;
+//     }
+
+//     private function __construct()
+//     {
+//         Commande::$infosClass=new PDO(Commande::$idCommande.';'.Commande::$dateCommande, Commande::$listeArticles);
+//         Commande::$infosClass->query("SET CHARACTER SET utf8");
+//     }
+
+//     private function _construct($idCommande, $dateCommande, $listeArticles)
+//     {
+//         $this->idCommande=$idCommande;
+//         $this->dateCommande=$dateCommande;
+//         $this->listeArticles=$listeArticles;
+//     }
+
+//     public function _destruct()
+//     {
+//         Commande::$infosClass=null;
+//     }
+
+//     public function getIdCommande()
+//     {
+//         return $this->idCommande;
+//     }
+
+//     public function ListeArticle(Articles $articles)
+//     {
+//         $this->listeArticles[$this.($articles->getIdArticle())];
+//     }
+
+//     public function AjouterArticleListe(Articles $articles)
+//     {
+//         $this->listeArticles[$articles->getIdArticle()];
+//     }
+
+//     public function SupprimerArticlePanier(Articles $articles)
+//     {
+//         unset($listeArticle[$articles->getIdArticle()]);
+//     }
+// } -->

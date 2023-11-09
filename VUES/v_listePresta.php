@@ -8,15 +8,15 @@
 </head>
 <style>
     
-    *,
+    /* *,
     *::before,
     *::after{
         box-sizing:border-box;
-    }
+    } */
 
     .flex-container{
         height: 400px;
-        width: 10em;
+        width: 450px;
         display: -webkit-box;
         display: flex;
         -webkit-box-pack: center;
@@ -27,7 +27,7 @@
         -webkit-box-direction: normal;
         flex-flow: row wrap;
         padding: 3em 1em;
-        background: white;
+        background-color: white;
     }
 
     .flex-container .flex-item{
@@ -103,9 +103,9 @@
         bottom: 20px;
     }
 </style>
-<body style="margin: 0 auto; background-image: url('./ASSETS/IMAGES/background_interfPro.png'); background-position: center; background-repeat:no-repeat; background-size: cover; font-family: 'poppins', sans-serif; color: white; font-size: 20px; font-weight: 600;">
-    <section>
-    <h3>Les prestations</h3>
+<body style="background-image: url('./ASSETS/IMAGES/background_interfPro.png'); background-position: center; background-repeat:no-repeat; background-size: cover; font-family: 'poppins', sans-serif; color: white; font-size: 20px; font-weight: 600; width:100%;">
+    <section style="display: flex; flex:1; flex-wrap: wrap;">
+    <h3>Liste de produits et de prestations</h3>
     <?php
         foreach($lesArticles as $unArticle)
         {

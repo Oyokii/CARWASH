@@ -26,7 +26,7 @@
                         </a>
                     </li>
                     <li class="nav-item active">
-                        <a href="index.php?uc=voirPrestationProduits&action=afficherProduits" class="nav-link">
+                        <a href="index.php?uc=voirPrestationProduits&action=afficherProduit" class="nav-link">
                             Produits
                         </a>
                     </li>

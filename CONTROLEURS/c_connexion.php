@@ -18,8 +18,7 @@
             {
                 $identifiant=$_POST['identifiant'];
                 $mdp=$_POST['mdp'];
-                $lesPrestations=$pdo->getLesPrestations();
-                $lesProduits=$pdo->getLesProduits();
+                $lesArticles=$pdo->getArticles();
                 $unUtilisateur = $pdo->verifConnexion($identifiant,$mdp);
                 if(isset($unUtilisateur)&& !empty($unUtilisateur))
                 {
@@ -31,26 +30,32 @@
                 break;
             }
 
-        case 'ajouterPrestation':
+        case 'ajouterArticle':
             {
-                $idPresta=$_POST['idPresta'];
-                $imgPresta=$_POST['imgPresta'];
-                $nomPresta=$_POST['nomPresta'];
-                $descPresta=$_POST['descPresta'];
-                $prixPresta=$_POST['prixPresta'];
-                $ajoutPresta=$pdo->ajouterPrestation($idPresta,$imgPresta, $nomPresta, $descPresta, $prixPresta);
+                $idArticle=$_POST['idArticle'];
+                $imgArticle=$_POST['imgArticle'];
+                $nomArticle=$_POST['nomArticle'];
+                $descArticle=$_POST['descArticle'];
+                $prixArticle=$_POST['prixArticle'];
+                $qteArticle=$_POST['qteArticle'];
+                $typeArticle=$_POST['typeArticle'];
+                $ajoutArticle=$pdo->CreateArticle($idArticle,$imgArticle, $nomArticle, $descArticle, $prixArticle, $qteArticle, $typeArticle);
                 include("VUES/v_interfacePro.php");
+                break;
             }
 
-            case 'ajouterProduit':
-                {
-                    $idProd=$_POST['idProd'];
-                    $imgProd=$_POST['imgProd'];
-                    $nomProd=$_POST['nomProd'];
-                    $descProd=$_POST['descProd'];
-                    $prixProd=$_POST['prixProd'];
-                    $ajoutProd=$pdo->ajouterProduit($idProd,$imgProd, $nomProd, $descProd, $prixProd);
-                    include("VUES/v_interfacePro.php");
-                }
+        case 'supprimerArticle':
+            {
+                $supprimerArticle=$pdo->DeleteArticle($idArticle);
+                include("VUES/v_interfacePro.php");
+                break;
+            }
+
+        case 'modifierArticle':
+            {
+                $supprimerArticle=$pdo->UpdateArticle($idArticle,$imgArticle, $nomArticle, $descArticle, $prixArticle, $qteArticle, $typeArticle);
+                include("VUES/v_interfacePro.php");
+                break;
+            }
     }
 ?>

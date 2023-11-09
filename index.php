@@ -17,6 +17,8 @@
 session_start();
 require_once("UTIL/class.PDO.carwash.php");
 $pdo=carwashClass::getCarwashClass();
+// $pdoArticle= Articles::getArticle();
+// $pdoCommande=Commande::getCommande();
 
 
 if(!isset($_REQUEST['uc']))
@@ -49,7 +51,15 @@ switch($uc)
 
     case 'panier':
         {
-            // include("CONTROLEURS/c_voirPrestaProduits.php");
+            // include("VUES/v_formulaireDevis_test.php");
+            // include("VUES/v_formulaireDevis.php");
+            include('VUES/panier.php');
+            break;
+            
+        }
+    
+    case "afficherDevis":
+        {
             include("VUES/v_devis.php");
             break;
         }

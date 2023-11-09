@@ -11,23 +11,17 @@
     {
         case 'afficherPrestation':
             {
-                $lesArticles=$pdo->getLesPrestations();
+                $leType="PE";
+                $lesArticles=$pdo->getArticleSelonType($leType);
                 include('VUES/v_listePresta.php');
                 break;
             }
 
-        case 'afficherProduits':
+        case 'afficherProduit':
             {
-                $lesArticles=$pdo->getLesProduits();
-                include('VUES/v_listeProduits.php');
-                break;
-            }
-
-        case 'afficherPanier':
-            {
-                $typesA=$_POST['valeur'];
-                $lesArticles=$pdo->getLesArticlesSelonType($valeur);
-                include("VUES/v_panier.php");
+                $leType= "PO";
+                $lesArticles=$pdo->getArticleSelonType($leType);
+                include('VUES/v_listePresta.php');
                 break;
             }
     }
