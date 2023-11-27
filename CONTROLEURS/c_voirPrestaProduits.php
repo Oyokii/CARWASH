@@ -21,7 +21,7 @@
             {
                 $leType= "PO";
                 $lesArticles=$pdo->getArticleSelonType($leType);
-                include('VUES/v_listePresta.php');
+                include('VUES/v_listeProduits.php');
                 break;
             }
     }

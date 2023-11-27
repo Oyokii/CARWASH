@@ -7,123 +7,92 @@
     <title>Document</title>
 </head>
 <style>
-    
-    /* *,
-    *::before,
-    *::after{
-        box-sizing:border-box;
-    } */
-
-    .flex-container{
-        height: 400px;
-        width: 450px;
-        display: -webkit-box;
-        display: flex;
-        -webkit-box-pack: center;
-        justify-content: space-around;
-        -webkit-box-align: center;
-        align-items: center;
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: normal;
-        flex-flow: row wrap;
-        padding: 3em 1em;
-        background-color: white;
-    }
-
-    .flex-container .flex-item{
-        margin: 25px;
-        padding: 4.5em 10em;
-        position: relative;
-        min-height: 400px;
-        border-radius: 5px;
-        margin-top: 9%;
-    }
-
-    .flex-container .flex-item:focus{
-        box-shadow: 0 0 3pt 2pt red;
-    }
-
-    .flex-container .flex-item a{
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        width: 100%;
-        height: 100%;
-        display: -webkit-box;
-        display: flex;
-        -webkit-box-pack: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        align-items: center;
-        text-decoration: none;
-        text-align: center;
-        color: #fff;
-        font-size: 24px;
-        font-weight: normal;
-        line-height: 1.5;
-        -webkit-transition: 600ms ease;
-        transition: 600ms ease;
-        border-radius: 0px;
-    }
-
-    .flex-container .flex-item a span{
-        -webkit-transform: translateZ(50px) scale(0.7);
-        transform: translateZ(50px) scale(0.7);
-    }
-
-    .tilt{
-        box-shadow: 0 20px 30px -13px rgba(0, 0, 0, 0.7);
-    }
-
-    .bg-one{
-        background: linear-gradient(45deg, #2EA1CF, #FA51D0);
-    }
-
-    .bg-two{
-        background: linear-gradient(45deg, #FA51D0, #2EA1CF);
-    }
-
-    .bg-three{
-        background: linear-gradient(60deg, #2EA1CF, #FA51D0);
-    }
-
-    .flex-item span > img{
-        width: 350px;
-        margin-bottom: 65%;
-    }
-
-    .flex-item .text{
-        color: black;
-        font-weight:800;
-        font-family: 'poppins', sans-serif;
-        font-size: 12px;
-        position: absolute;
-        bottom: 20px;
+    .card{
+        border:3px solid #FF9800;
+        border-radius:35px;
     }
 </style>
-<body style="background-image: url('./ASSETS/IMAGES/background_interfPro.png'); background-position: center; background-repeat:no-repeat; background-size: cover; font-family: 'poppins', sans-serif; color: white; font-size: 20px; font-weight: 600; width:100%;">
-    <section style="display: flex; flex:1; flex-wrap: wrap;">
-    <h3>Liste de produits et de prestations</h3>
     <?php
-        foreach($lesArticles as $unArticle)
-        {
+        include("VUES/v_header.php");
     ?>
-    <div class="flex-container">
-        <div class="flex-item bg-one tilt">
-            <a href="#nothing"> <span><img src="./ASSETS/IMAGES/imgvwati.jpeg"></span>
-                <div class="text">
-                    <p style="font-size: 15px;">Super wash * Shampooing des sièges et des moquettes * Nettoyage plafond * Lavage avec protection hydrophobe</p>
-                    Price: 300rs
+<body style="">
+    <h3>Liste de prestations</h3>
+    <section style="display: flex; flex-wrap: wrap; flex:1fr 1fr; justify-content: center;">
+    <ul style="list-style-type: none; display: flex; flex:1; flex-wrap:wrap; margin: 5vh 15vh;" id="catalogue-liste">
+        <li data-nom="un produit" data-prix="50" data-designation="card-text">
+            <div class="card" style="width: 18rem; margin: 3vh 4vh;">
+                <img src="./ASSETS/IMAGES/services.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Basic carwash citadine</h5>
+                    <p class="card-text">Nettoyage intérieur OU Nettoyage extérieur</p>
+                    <p class="card-prix">50€</p>
                 </div>
-            </a>
-        </div>
-    </div>
-    <?php
-        }
-    ?>
+            </div>
+            <button style="margin-left: 30%;" onclick="ajouterAuPanier(this)">Ajouter au panier</button>
+        </li>
+        <li data-nom="un produit" data-prix="60" data-designation="card-text">
+            <div class="card" style="width: 18rem; margin: 3vh 4vh;">
+                <img src="./ASSETS/IMAGES/services.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Basic carwash suv/4x4</h5>
+                    <p class="card-text">Nettoyage intérieur OU Nettoyage extérieur</p>
+                    <p class="card-text">60€</p>
+                </div>
+            </div>
+            <button style="margin-left: 30%;" onclick="ajouterAuPanier(this)">Ajouter au panier</button>
+        </li>
+        <li data-nom="un produit" data-prix="70" data-designation="card-text">
+            <div class="card" style="width: 18rem; margin: 3vh 4vh;">
+                <img src="./ASSETS/IMAGES/services.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Super carwash citadine</h5>
+                    <p class="card-text">Nettoyage intérieur et extérieur * Rénovation des plastiques * Nettoyage des vitres * Nettoyage des jantes * Aspiration habitacle</p>
+                    <p class="card-text">70€</p>
+                </div>
+            </div>
+            <button style="margin-left: 30%;" onclick="ajouterAuPanier(this)">Ajouter au panier</button>
+        </li>
+        <li data-nom="un produit" data-prix="90" data-designation="card-text">
+            <div class="card" style="width: 18rem; margin: 3vh 4vh;">
+                <img src="./ASSETS/IMAGES/services.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Super carwash suv/4x4</h5>
+                    <p class="card-text">Nettoyage intérieur et extérieur * Rénovation des plastiques * Nettoyage des vitres * Nettoyage des jantes * Aspiration habitacle</p>
+                    <p class="card-text">90€</p>
+                </div>
+            </div>
+            <button style="margin-left: 30%;" onclick="ajouterAuPanier(this)">Ajouter au panier</button>
+        </li>
+        <li data-nom="un produit" data-prix="100" data-designation="card-text">
+            <div class="card" style="width: 18rem; margin: 3vh 4vh;">
+                <img src="./ASSETS/IMAGES/services.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Maxi carwash citadine</h5>
+                    <p class="card-text">Super wash * Shampooing des sièges et des moquettes * Nettoyage plafond * Lavage avec protection hydrophobe</p>
+                    <p class="card-text">100€</p>
+                </div>
+            </div>
+            <button style="margin-left: 30%;" onclick="ajouterAuPanier(this)">Ajouter au panier</button>
+        </li>
+        <li data-nom="un produit" data-prix="120" data-designation="card-text">
+            <div class="card" style="width: 18rem; margin: 3vh 4vh;">
+                <img src="./ASSETS/IMAGES/services.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Maxi carwash suv/4x4</h5>
+                    <p class="card-text">Super wash * Shampooing des sièges et des moquettes * Nettoyage plafond * Lavage avec protection hydrophobe</p>
+                    <p class="card-text">120€</p>
+                </div>
+            </div>
+            <button style="margin-left: 30%;" onclick="ajouterAuPanier(this)">Ajouter au panier</button>
+        </li>
+         
+    </ul>
     </section>
+    <?php
+        include("v_contact.php");
+    ?>
+    <script src="./ASSETS/js/panier.js"></script>
     <link rel="stylesheet" href="./ASSETS/bootstrap-5.3.2/bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js">
+    
 </body>
 </html>

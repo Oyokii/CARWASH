@@ -1,128 +1,80 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Royal Detailing</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <style>
-    *,
-    *::before,
-    *::after{
-        box-sizing:border-box;
-    }
-
-    .flex-container{
-        height: 400px;
-        width: 10em;
-        display: -webkit-box;
-        display: flex;
-        -webkit-box-pack: center;
-        justify-content: space-around;
-        -webkit-box-align: center;
-        align-items: center;
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: normal;
-        flex-flow: row wrap;
-        padding: 3em 1em;
-        background: white;
-    }
-
-    .flex-container .flex-item{
-        margin: 25px;
-        padding: 4.5em 10em;
-        position: relative;
-        min-height: 400px;
-        border-radius: 5px;
-        margin-top: 9%;
-    }
-
-    .flex-container .flex-item:focus{
-        box-shadow: 0 0 3pt 2pt red;
-    }
-
-    .flex-container .flex-item a{
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        width: 100%;
-        height: 100%;
-        display: -webkit-box;
-        display: flex;
-        -webkit-box-pack: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        align-items: center;
-        text-decoration: none;
-        text-align: center;
-        color: #fff;
-        font-size: 24px;
-        font-weight: normal;
-        line-height: 1.5;
-        -webkit-transition: 600ms ease;
-        transition: 600ms ease;
-        border-radius: 0px;
-    }
-
-    .flex-container .flex-item a span{
-        -webkit-transform: translateZ(50px) scale(0.7);
-        transform: translateZ(50px) scale(0.7);
-    }
-
-    .tilt{
-        box-shadow: 0 20px 30px -13px rgba(0, 0, 0, 0.7);
-    }
-
-    .bg-one{
-        background: linear-gradient(45deg, #2EA1CF, #FA51D0);
-    }
-
-    .bg-two{
-        background: linear-gradient(45deg, #FA51D0, #2EA1CF);
-    }
-
-    .bg-three{
-        background: linear-gradient(60deg, #2EA1CF, #FA51D0);
-    }
-
-    .flex-item span > img{
-        width: 350px;
-        margin-bottom: 65%;
-    }
-
-    .flex-item .text{
-        color: black;
-        font-weight:800;
-        font-family: 'poppins', sans-serif;
-        font-size: 12px;
-        position: absolute;
-        bottom: 20px;
-    }
+.card{
+    border:3px solid #FF9800;
+    border-radius:35px;
+}
 </style>
-<body>
-    <section>
-        <h3>Les prestations</h3>
-        <?php
-            foreach($lesProduits as $leProduit)
-            {
-        ?>
-        <div class="flex-container">
-            <div class="flex-item bg-one tilt">
-                <a href="#nothing"> <span><img src="./ASSETS/IMAGES/imgvwati.jpeg"></span>
-                    <div class="text">
-                        <p style="font-size: 15px;">Super wash * Shampooing des sièges et des moquettes * Nettoyage plafond * Lavage avec protection hydrophobe</p>
-                        Price: 300rs
-                    </div>
-                </a>
+    <?php
+        include("VUES/v_header.php");
+    ?>
+<body style="">
+    <h3>Liste de prestations</h3>
+    <section style="display: flex; flex-wrap: wrap; flex:1fr 1fr; justify-content: center;">
+    <ul style="list-style-type: none; display: flex; flex:1; flex-wrap:wrap; margin: 5vh 15vh;" id="catalogue-liste">
+        <li data-nom="Aspirateur Eau/Poussière" data-prix="60" data-designation="Aspire-tout">
+            <div class="card" style="width: 15rem; margin: 5vh 7vh;">
+                <img src="./ASSETS/IMAGES/services.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Aspirateur Eau/Poussière</h5>
+                    <p class="card-text">Aspire-tout</p>
+                    <p class="card-text">200€</p>
+                </div>
             </div>
+            <button style="margin-left: 30%;" onclick="ajouterAuPanier(this)">Ajouter au panier</button>
+        </li>
+        <li data-nom="Chiffon intérieur" data-prix="200" data-designation="Chiffonne tout">
+            <div class="card" style="width: 15rem; margin: 5vh 7vh;">
+                <img src="./ASSETS/IMAGES/services.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Chiffon intérieur</h5>
+                    <p class="card-text">Chiffonne tout</p>
+                    <p class="card-text">30€</p>
+                </div>
+            </div>
+            <button style="margin-left: 30%;" onclick="ajouterAuPanier(this)">Ajouter au panier</button>
+        </li>
+        <li data-nom="Savon Savonnier Océane" data-prix="50" data-designation="De la qualité">
+            <div class="card" style="width: 15rem; margin: 5vh 7vh;">
+                <img src="./ASSETS/IMAGES/services.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Savon Savonnier Océane</h5>
+                    <p class="card-text">De la qualité</p>
+                    <p class="card-text">50€</p>
+                </div>
+            </div>
+            <button style="margin-left: 30%;" onclick="ajouterAuPanier(this)">Ajouter au panier</button>
+        </li>
+        <li data-nom="Pinceau" data-prix="15" data-designation="Pince tout">
+            <div class="card" style="width: 15rem; margin: 5vh 7vh;">
+                <img src="./ASSETS/IMAGES/services.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Pinceau</h5>
+                    <p class="card-text">Pince tout</p>
+                    <p class="card-text">15€</p>
+                </div>
+            </div>
+            <button style="margin-left: 30%;" onclick="ajouterAuPanier(this)">Ajouter au panier</button>
+        </li>
+        <div style="border: 2px solid #FF9800; width: 500px; height: 50vh; margin-right: 200px; margin-top: 10vh;">
+            <h3>Mon panier</h3>
+            <ul id="panier-liste" style=""></ul>
+            <p>Total: <span id="total">0</span>€</p>
         </div>
-        <?php
-            }
-        ?>
+    </ul>
     </section>
-      
+    <?php
+        include("v_contact.php");
+    ?>
+    <script src="./ASSETS/js/panier.js"></script>
+    <link rel="stylesheet" href="./ASSETS/bootstrap-5.3.2/bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js">
 </body>
 </html>

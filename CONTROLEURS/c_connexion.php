@@ -30,30 +30,39 @@
                 break;
             }
 
+        case 'connectee':
+            {
+                include('VUES/v_interfacePro.php');
+                break;
+            }
+
         case 'ajouterArticle':
             {
-                $idArticle=$_POST['idArticle'];
-                $imgArticle=$_POST['imgArticle'];
-                $nomArticle=$_POST['nomArticle'];
-                $descArticle=$_POST['descArticle'];
+                $imageArticle=$_POST['imageArticle'];
+                $libelleArticle=$_POST['libelleArticle'];
+                $descriptionArticle=$_POST['descriptionArticle'];
                 $prixArticle=$_POST['prixArticle'];
-                $qteArticle=$_POST['qteArticle'];
                 $typeArticle=$_POST['typeArticle'];
-                $ajoutArticle=$pdo->CreateArticle($idArticle,$imgArticle, $nomArticle, $descArticle, $prixArticle, $qteArticle, $typeArticle);
-                include("VUES/v_interfacePro.php");
+                $articleCree=$pdo->CreerArticle($imageArticle, $libelleArticle, $descriptionArticle, $prixArticle, $typeArticle);
                 break;
             }
 
         case 'supprimerArticle':
             {
+                $idArticle=$_GET['id'];
                 $supprimerArticle=$pdo->DeleteArticle($idArticle);
-                include("VUES/v_interfacePro.php");
                 break;
             }
 
         case 'modifierArticle':
             {
-                $supprimerArticle=$pdo->UpdateArticle($idArticle,$imgArticle, $nomArticle, $descArticle, $prixArticle, $qteArticle, $typeArticle);
+                $idArticle=$_POST['idArticle'];
+                $imageArticle=$_POST['imageArticle'];
+                $libelleArticle=$_POST['libelleArticle'];
+                $descriptionArticle=$_POST['descriptionArticle'];
+                $prixArticle=$_POST['prixArticle'];
+                $typeArticle=$_POST['typeArticle'];
+                $modifierArticle=$pdo->UpdateArticle($idArticle,$imageArticle, $libelleArticle, $descriptionArticle, $prixArticle, $typeArticle);
                 include("VUES/v_interfacePro.php");
                 break;
             }

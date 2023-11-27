@@ -16,6 +16,8 @@ function afficherPanier() {
 
     panierListe.innerHTML = '';
     let total = 0;
+    let TVA = 0;
+    let TTC = 0;
 
     for (const article of panier) {
         const listItem = document.createElement('li');
@@ -23,6 +25,17 @@ function afficherPanier() {
         ${article.description} - ${article.prix}€ `;
         panierListe.appendChild(listItem);
         total += article.prix;
+
+        for (const article of panier) {
+            const listItem = document.createElement('li');
+            listItem.textContent = `${article.nom} ${article.description} <br> ${article.prix}€ `;
+            panierListe.appendChild(listItem);
+            TVA = total* 0.2;
+            TTC = total+TVA;
+            total += article.prix + TVA + TTC;
+        }
+    
+        totalSpan.textContent = total;
     }
 
     totalSpan.textContent = total;

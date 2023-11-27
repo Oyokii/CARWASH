@@ -46,17 +46,17 @@ class carwashClass
     // AFFICHER LES ARTICLES
     public function getArticleSelonType($leType)
     {
-        $req= "select * from articles where typeArticle='".$leType."'";
-        $res=carwashClass::$monPdo->query($req);
-        $lesArticles=$res->fetch();
-        return $lesArticles;
+        $req= "SELECT * FROM articles WHERE typeArticle='$leType';";
+        $res=carwashClass::$monPdo->prepare($req);
+        $res->execute();
+        return $res;
     }
 
     public function getArticles()
     {
         $req= "select * from articles";
         $res=carwashClass::$monPdo->query($req);
-        $lesArticles=$res->fetch();
+        $lesArticles=$res->fetchAll();
         return $lesArticles;
     }
 
@@ -79,41 +79,50 @@ class carwashClass
     // SUPPRIMER UN ARTICLE
     public function DeleteArticle($id)
     {
-        $req= "delete from article where idArticle = ".$id."'";
-        $res=carwashClass::$monPdo->query($req);
-        $lesArticles=$res->fetchAll();
-        return $lesArticles;
+        $req= "DELETE FROM articles where idArticle = '$id';";
+        $res=carwashClass::$monPdo->prepare($req);
+        $res->execute();
+        return $res;
     }
 
-    // AJOUTER UN NOUVEL ARTICLE
-    public function CreateArticle($idArticle, $libelleArticle, $imageArticle, $descriptionArticle, $prixArticle, $quantiteArticle, $typeArticle)
-    {
-        $req="insert into article values ('$idArticle', '$libelleArticle', '$imageArticle', '$descriptionArticle', '$prixArticle', '$quantiteArticle', '$typeArticle')";
-        $res=carwashClass::$monPdo->query($req);
-        $lesArticles=$res->fetchAll();
-        return $lesArticles;
-
+    public function CreerArticle($imageArticle, $libelleArticle, $descriptionArticle, $prixArticle, $typeArticle){
+        $req= "INSERT INTO articles (imageArticle, libelleArticle, descriptionArticle, prixArticle, typeArticle) VALUES ('$imageArticle', '$libelleArticle', '$descriptionArticle', '$prixArticle', '$typeArticle');";
+        $res=carwashClass::$monPdo->prepare($req);
+        $res->execute();
+        return $res;
     }
 
     // MODIFIER UN ARTICLE
-    public function UpdateArticle($idArticle, $libelleArticle, $imageArticle, $descriptionArticle, $prixArticle, $quantiteArticle, $typeArticle)
+    public function UpdateArticle($idArticle, $imageArticle, $libelleArticle, $descriptionArticle, $prixArticle ,$typeArticle)
     {
-        $req="update article set idArticle = '".$idArticle."', libelleArticle= '".$libelleArticle."', imageArticle= '".$imageArticle."', descriptionArticle= '".$descriptionArticle."', prixArticle= '".$prixArticle."', quantiteArticle= '".$quantiteArticle."', typeArticle= '".$typeArticle."' where idArticle= '".$idArticle."'";
-        $res=carwashClass::$monPdo->query($req);
-        $lesArticles=$res->fetchAll();
-        return $lesArticles;
+        $req="UPDATE articles SET imageArticle= '$imageArticle', libelleArticle= '$libelleArticle', descriptionArticle= '$descriptionArticle', prixArticle= '$prixArticle, 'typeArticle= '$typeArticle' WHERE idArticle= '$idArticle';";
+        $res=carwashClass::$monPdo->prepare($req);
+        $res->execute();
+        return $res;
     }
 
-    // AJOUTER UN NOUVEL ARTICLE A LA LISTE
-    // public function AjouterArticleListe($idArticle, $libelleArticle, $imageArticle, $descriptionArticle, $prixArticle, $quantiteArticle, $typeArticle)
-    // {
-    //     $req="select * from article where idArticle = '".$idArticle."', libelleArticle= '".$libelleArticle."', imageArticle= '".$imageArticle."', descriptionArticle= '".$descriptionArticle."', prixArticle= '".$prixArticle."', quantiteArticle= '".$quantiteArticle."', typeArticle= '".$typeArticle."' where idArticle= '".$idArticle."'";
-    // }
-
-    // CALCULER LE PRIX TOTAL
-    public function PrixTotalPanier($idArticle, $prixArticle)
+    public function getPanier()
     {
-        $req= "".$idArticle."".$prixArticle."";
+        $req="SELECT * FROM panier INNER JOIN articles ON articles.idArticle=panier.idArticle;";
+        $res=carwashClass::$monPdo->prepare($req);
+        $res->execute();
+        return $res;
+    }
+
+    public function getAjouterArticlesPanier($idArticle)
+    {
+        $req="INSERT INTO panier (idArticle) VALUES ('$idArticle');";
+        $res=carwashClass::$monPdo->prepare($req);
+        $res->execute();
+        return $res;
+    }
+
+    public function supprimerArticlePanier( $idArticle )
+    {
+        $req="DELETE FROM panier where idArticle = '$idArticle';";
+        $res=carwashClass::$monPdo->prepare($req);
+        $res->execute();
+        return $res;
     }
 }
 

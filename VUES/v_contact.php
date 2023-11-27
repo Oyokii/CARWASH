@@ -6,45 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    .inputform{
+        width: 300px;
+        height: 6vh;
+        margin: 6px;
+    }
+
+    .message{
+        height:14vh;
+    }
+</style>
 <body>
-    <section style="background-color: #2F2E2E; color: white; text-align: center;">
-        <h1 style="font-size: 70px; padding-top: 5vh; margin-top: -2vh; color: #181718; font-weight: 700;">VENEZ NOUS VOIR !</h1>
-        <p style="padding-top: 7vh;">ET REDECOUVREZ VOTRE VEHICULE</p>
-        <ul class="d-flex" style="width: 70%; justify-content:space-around; margin-left: 15%; list-style-type: none; padding-top: 7vh;">
-            <li>
-                <img style="width: 50px;" src="./ASSETS/IMAGES/mel.png" alt="email">
-                <p style="font-weight: 10;">email@gmail.com</p>
-            </li>
-            <li>
-                <img style="width: 50px;" src="./ASSETS/IMAGES/localisation.png" alt="localisation">
-                <p style="font-weight: 10;">47 rue des Couronnes 75020 Paris, France</p>
-            </li>
-            <li>
-                <img style="width: 50px;" src="./ASSETS/IMAGES/telephone.png" alt="téléphone">
-                <p style="font-weight: 10;">+590 690 00 00 00</p>
-            </li>
-        </ul>
-        <a style="text-decoration: none;" href="#"><img style="width: 50px;" src="./ASSETS/IMAGES/icon-instagram.png" alt=""></a>
-        <div style="border-top: 1px solid #8e8d92; margin-top: 5vh;">
-            <ul style="display: flex; list-style-type: none; width: 100%; height: 20vh; justify-content: space-around; padding-top: 5vh;">
-                <li>
-                    <a style="text-decoration: none; color: white;" href="">
-                        <p style="font-weight: 10;">Politique de cookies</p>
-                    </a>
-                </li>
-                <li>
-                    <a style="text-decoration: none; color: white;" href="">
-                        <p style="font-weight: 10;">Mentions légales</p>
-                    </a>
-                </li>
-                <li>
-                    <a style="text-decoration: none; color: white;" href="">
-                        <p style="font-weight: 10;">Politique de confidentialité</p>
-                    </a>
-                </li>
-            </ul>
-            <p style="padding-bottom: 7vh; font-weight: 10;">© 2035 par Royal Detailing. Créé par CodéLean</p>
-        </div>
+    <section style="height: 40vh; background-color: #FF9800;">
+        <h2 style="color: white; text-align: center; margin-top: 5%;">GET IN TOUCH</h2>
+        <form action="post" style="margin-left: 30%; margin-top: 2%; display: flex;">
+            <div>
+                <input class="inputform" type="text" name="Nom" placeholder="NOM"> <br>
+                <input class="inputform" type="mail" name="Adresse "placeholder="MAIL">
+            </div>
+            <input class="inputform message" type="text" name="Message" placeholder="MESSAGE" >
+        </form>
+        <button style="margin-left: 45%; background-color: #FF5200; width: 150px; height:7vh; margin-top: 2%; border-radius: 25px; border: 0px solid #FF5200; color: white; font-weight: 500;" type="submit">SUBMIT</button>
     </section>
 </body>
 </html>

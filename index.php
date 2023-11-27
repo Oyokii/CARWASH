@@ -5,8 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- <link rel="stylesheet" href="/ASSETS/CSS/style.css"> -->
 </head>
 <body>
+    <link rel="stylesheet" href="ASSETS/bootstrap-5.3.2/bootstrap-5.3.2-dist/css/bootstrap.min.css">
     <script 
     src="ASSETS/bootstrap-5.3.2/bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js">
     </script>
@@ -37,11 +39,16 @@ switch($uc)
         break;
     }
 
-    case 'voirPrestationProduits':
+    case 'produits':
     {
         include("CONTROLEURS/c_voirPrestaProduits.php");
         break;
     }
+    case 'prestations':
+        {
+            include("CONTROLEURS/c_voirPrestaProduits.php");
+            break;
+        }
 
     case 'administrer':
         {
@@ -51,17 +58,13 @@ switch($uc)
 
     case 'panier':
         {
-            // include("VUES/v_formulaireDevis_test.php");
+            include("VUES/v_formulaireDevis_test.php");
             // include("VUES/v_formulaireDevis.php");
-            include('VUES/panier.php');
+            // include('VUES/v_panier.php');
+            // include('VUES/panier.php');
+            // include('CONTROLEURS/c_gererPanier.php');
             break;
             
-        }
-    
-    case "afficherDevis":
-        {
-            include("VUES/v_devis.php");
-            break;
         }
 }
 ?>

@@ -1,7 +1,7 @@
 <?php
     if(!isset($_REQUEST['action']))
     {
-        $action='ajouterArticlesPanier';
+        $action='voirPanier';
     }else{
         $action=$_REQUEST['action'];
     }
@@ -11,15 +11,24 @@
     {
         case 'voirPanier':
             {
-                // $lesArticles=$pdoCommande()->ListeArticle();
+                $lesArticles=$pdo->getPanier();
                 include('VUES/v_panier.php');
                 break;
             }
 
-            // case 'ajouterArticlesPanier':
-            //     {
-            //         $lesArticles=$pdoCommande->getAjouterArticlesPanier();
-            //         break;
-            //     }
+            case 'ajouterArticlesPanier':
+                {
+                    $idArticle=$_GET['$idArticle'];
+                    $lesArticles=$pdoCommande->getAjouterArticlesPanier($idArticle);
+                    $lesArticles=$pdo->getPanier();
+                    break;
+                }
+        
+            case 'supprimerArticlePanier':
+                {
+                    $idArticle=$_GET['$idArticle'];
+                    $supprimerArticle=$pdo->supprimerArticlePanier($idArticle);
+                    include('VUES/v_panier.php');
+                }
     }
 ?>

@@ -9,189 +9,73 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'poppins', sans-serif;
-}
-
-.body{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background-image: url('./ASSETS/IMAGES/background_interfPro.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-}
-
-.section{
-    position: relative;
-    max-width: 400px;
-    background-color: transparent;
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    border-radius: 20px;
-    backdrop-filter: blur(55px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem 3rem;
-    margin: 0 30px;
-}
-
-h1{
-    font-size: 2rem;
-    color: #fff;
-    text-align: center;
-}
-
-.inputbox{
-    position: relative;
-    margin: 30px 0;
-    max-width: 310px;
-    border-bottom: 2px solid #fff;
-}
-
-.inputbox label{
-    position: absolute;
-    top: 50%;
-    left: 5px;
-    transform: translateY(-50%);
-    color: #fff;
-    font-size: 1rem;
-    pointer-events: none;
-    transition: all 0.5s ease-in-out;
-}
-
-input:focus ~label,
-input:valid ~ label{
-    top: -5px;
-}
-
-.inputbox input{
-    width: 100%;
-    height: 60px;
-    background: transparent;
-    border: none;
-    outline: none;
-    font-size: 1rem;
-    padding: 0 35px 0 5px;
-    color: #fff;
-}
-
-.inputbox ion-icon{
-    position: absolute;
-    right: 8px;
-    color: #fff;
-    font-size: 1.2rem;
-    top: 20px;
-}
-
-.forget{
-    margin: 35px 0;
-    font-size: 0.85rem;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-}
-
-.forget label{
-    display: flex;
-    align-items: center;
-}
-
-.forget label input{
-    margin-right: 3px;
-}
-
-.forget a{
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.forget a:hover{
-    text-decoration: underline;
-}
-
-button{
-    width: 100%;
-    height: 40px;
-    border-radius: 40px;
-    background-image: url('./ASSETS/IMAGES/backgroundbutton.jpeg');
-    border: none;
-    outline: none;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 600;
-    transition: all 0.4s ease;
-}
-
-button:hover{
-    background-color: rgb(255, 255, 255, 0.5);
-}
-
-.register{
-    font-size: 0.9rem;
-    color: #fff;
-    text-align: center;
-    margin: 25px 0 10px;
-}
-
-.register p a{
-    text-decoration: none;
-    color: #fff;
-    font-weight: 600;
-}
-
-.register p a:hover{
-    text-decoration: underline;
-}
+    input{
+        width: 400px;
+    }
 </style>
-<body class="body">
-    <section class="section">
-        <form action="index.php?uc=administrer&action=ajouterPrestation" method="post">
-            <h1 style="color:#FF87E6;">Ajouter un article</h1>
-            <div class="inputbox">
-                <ion-icon name="pricetag-outline"></ion-icon>
-                <input name="idPresta" type="text" required>
-                <label style="color:#3981F0;" for="">Id de l'article</label>
+<body>
+    <section style="display: flex; justify-content: space-around; width: 60vh; margin-left: 30%; margin-bottom: 10vh;">
+        <form action="index.php?uc=administrer&action=ajouterArticle" method="post">
+            <div style="width: 60vh; margin-left: 400pxvh; border: 3px solid black; border-radius: 25px; text-align: center;">
+                <div >
+                    <h1 style="text-align: center;">Ajouter un article</h1>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">image</label>
+                        <input name="imageArticle" type="file" class="form-control" id="exampleFormControlTextarea1" placeholder="image de l'article">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">libellé</label>
+                        <input name="libelleArticle" type="text" class="form-control" id="exampleFormControlTextarea1" placeholder="nom de l'article">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">description</label>
+                        <input name="descriptionArticle" type="text" class="form-control" id="exampleFormControlTextarea1" placeholder="description de l'article">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">prix</label>
+                        <input name="prixArticle" type="text" class="form-control" id="exampleFormControlTextarea1" placeholder="prix de l'article">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">type</label>
+                        <input name="typeArticle" type="text" class="form-control" id="exampleFormControlTextarea1" placeholder="type de l'article">
+                    </div>
+
+                    <button type="submit">Ajouter l'article</button>
+                </div>
             </div>
-            <div class="inputbox">
-                <ion-icon name="image-outline"></ion-icon>
-                <input name="imgPresta" type="text" required>
-                <label style="color:#3981F0;" for="">Image</label>
+        </form>
+        <form action="index.php?uc=administrer&action=modifierArticle" method="post">
+            <div style="width: 60vh; margin-left: 40vh; border: 3px solid black; border-radius: 25px; text-align: center;">
+                <div >
+                    <h1 style="text-align: center;">Modifier un article</h1>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">id</label>
+                        <input name="idArticle" type="text" class="form-control" id="exampleFormControlTextarea1" placeholder="nom de l'article">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">image</label>
+                        <input name="imageArticle" type="file" class="form-control" id="exampleFormControlTextarea1" placeholder="image de l'article">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">libellé</label>
+                        <input name="libelleArticle" type="text" class="form-control" id="exampleFormControlTextarea1" placeholder="nom de l'article">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">description</label>
+                        <input name="descriptionArticle" type="text" class="form-control" id="exampleFormControlTextarea1" placeholder="description de l'article">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">prix</label>
+                        <input name="prixArticle" type="text" class="form-control" id="exampleFormControlTextarea1" placeholder="prix de l'article">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">type</label>
+                        <input name="typeArticle" type="text" class="form-control" id="exampleFormControlTextarea1" placeholder="type de l'article">
+                    </div>
+
+                    <button type="submit">Modifier l'article</button>
+                </div>
             </div>
-            <div class="inputbox">
-                <ion-icon name="clipboard-outline"></ion-icon>
-                <input name="nomPresta" type="text" required>
-                <label style="color:#3981F0;" for="">Nom de l'article</label>
-            </div>
-            <div class="inputbox">
-                <ion-icon name="clipboard-outline"></ion-icon>
-                <input name="descPresta" type="text" required>
-                <label style="color:#3981F0;" for="">Description</label>
-            </div>
-            <div class="inputbox">
-                <ion-icon name="cash-outline"></ion-icon>
-                <input name="prixPresta" type="text" required>
-                <label style="color:#3981F0;" for="">Prix</label>
-            </div>
-            <div class="inputbox">
-                <ion-icon name="clipboard-outline"></ion-icon>
-                <input name="qtePresta" type="text" required>
-                <label style="color:#3981F0;" for="">Quantité</label>
-            </div>
-            <div class="inputbox">
-                <ion-icon name="clipboard-outline"></ion-icon>
-                <input name="typeArticle" type="text" required>
-                <label style="color:#3981F0;" for="">Son type (PE ou PO)</label>
-            </div>
-            <button type="submit">Ajouter la prestation</button>
         </form>
     </section>
 </body>

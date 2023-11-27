@@ -1,55 +1,67 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <title>Panier</title>
+  <link rel="stylesheet">
 </head>
-<body>
-    <!-- <?php
-        // include("VUES/v_header.php");
-    ?> -->
-    <section style="margin-top: 5vh;">
-        <h1>P A N I E R</h1>
-        <?php
-        foreach($lesArticles as $unArticle)
-        {
-        ?>
-        <table>
-            <tr>
-                <th>
-                    <h1>id Commande</h1>
-                    <h1>imageArticle</h1>
-                    <h1>libelleArticle</h1>
-                    <h1>prixArticle</h1>
-                    <h1>quantiteArticle</h1>
-                    <h1>date du devis</h1>
-                    
-                </th>
-                <tbody>
-                    <?php 
-                        echo '<th>';
-                        echo '<h1>'.($unArticle['libelle']).'</h1>';
-                        echo "'<img src='" .$unArticle['image']."'>'";
-                        echo '<h1>'.($unArticle['prix']).'</h1>';
-                        echo '<h1>'.($unArticle['quantite']).'</h1>';
-                        echo '<h1>'.($unArticle['dateDevis']).'</h1>';
-                        echo '</th>';
-                    ?>
-                </tbody>
-            </tr>
-        </table>
-        <?php
-        }
-        ?>
+<style>
+    /* Styles pour le panier */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
 
-    </section>    
-    <?php
-        include("VUES/v_contact.php");
-    ?>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="assets/js/cart.js" defer></script>
+h1 {
+  text-align: center;
+}
+
+.panier {
+  width: 60%;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.liste-produits {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.total {
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+.ajout-produit input[type="text"],
+.ajout-produit input[type="number"],
+.ajout-produit button {
+  margin-bottom: 10px;
+}
+
+</style>
+<body>
+  <h1>Mon Panier</h1>
+  
+  <div class="panier">
+    <div class="liste-produits" id="liste-produits">
+      <!-- Ici seront affichés les produits -->
+    </div>
+    
+    <div class="total">
+      <strong>Total :</strong> <span id="total">0</span>€
+    </div>
+    
+    <div class="ajout-produit">
+      <input type="text" id="nom-produit" placeholder="Nom du produit">
+      <input type="number" id="prix-produit" placeholder="Prix du produit">
+      <button onclick="ajouterProduit()">Ajouter Produit</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
