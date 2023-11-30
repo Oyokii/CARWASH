@@ -58,11 +58,11 @@ switch($uc)
 
     case 'panier':
         {
-            include("VUES/v_formulaireDevis_test.php");
+            // include("VUES/v_formulaireDevis_test.php");
             // include("VUES/v_formulaireDevis.php");
             // include('VUES/v_panier.php');
             // include('VUES/panier.php');
-            // include('CONTROLEURS/c_gererPanier.php');
+            include('CONTROLEURS/c_gererPanier.php');
             break;
             
         }

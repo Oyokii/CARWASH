@@ -17,24 +17,28 @@
     ?>
 <body style="">
     <section style="display: flex; flex-wrap: wrap; flex:1fr 1fr; justify-content: center;">
-    <ul style="list-style-type: none; display: flex; flex:1; flex-wrap:wrap; margin: 5vh 15vh;" id="catalogue-liste">
-        <?php
-            foreach($lesArticles as $unArticle)
-            {
-        echo '<li data-nom="un produit" data-prix="50" data-designation="card-text">';
-            echo '<div class="card" style="width: 18rem; margin: 3vh 4vh;">';
-            echo '<img src="./ASSETS/IMAGES/services.jpg" class="card-img-top" alt="...">';
-            echo '<div class="card-body">';
-            echo '<h5 class="card-title">Basic carwash citadine</h5>';
-            echo '<p class="card-text">Nettoyage intérieur OU Nettoyage extérieur</p>';
-            echo '<p class="card-prix">50€</p>';
+    <form action="index.php?uc=panier&action=ajouterArticlesPanier" method="post">
+        <ul style="list-style-type: none; display: flex; flex:1; flex-wrap:wrap; margin: 5vh 15vh;" id="catalogue-liste">
+            <?php
+                foreach($lesArticles as $unArticle)
+                {
+            echo '<li data-nom="un produit" data-prix="50" data-designation="card-text">';
+                echo '<div class="card" style="width: 18rem; margin: 3vh 4vh;">';
+                echo '<img src="'.$unArticle['image'].'" class="card-img-top" alt="...">';
+                echo '<div class="card-body">';
+                echo '<h5 class="card-title">'.$unArticle['libelle'].'</h5>';
+                echo '<p class="card-text">'.$unArticle['description'].'</p>';
+                echo '<p class="card-prix">'.$unArticle['prix'].'</p>';
+                echo '</div>';
             echo '</div>';
-        echo '</div>';
-        echo '<button style="margin-left: 30%;" onclick="ajouterAuPanier(this)">'."Ajouter au panier".'</button>';
-        echo '</li>';
-            }   
-        ?>
-    </ul>
+            echo '<button style="margin-left: 30%;">'."Ajouter au panier".'</button>';
+            echo '</li>';
+                }   
+            ?>
+            <button type="submit"></button>
+        </ul>
+    </form>
+    
     </section>
     <?php
         include("v_contact.php");
