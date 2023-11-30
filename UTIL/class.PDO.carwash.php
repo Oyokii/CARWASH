@@ -46,7 +46,7 @@ class carwashClass
     // AFFICHER LES ARTICLES
     public function getArticleSelonType($leType)
     {
-        $req= "SELECT * FROM articles WHERE typeArticle='$leType';";
+        $req= "SELECT * FROM article WHERE typeArticle='$leType';";
         $res=carwashClass::$monPdo->prepare($req);
         $res->execute();
         return $res;
@@ -54,7 +54,7 @@ class carwashClass
 
     public function getArticles()
     {
-        $req= "select * from articles";
+        $req= "select * from article";
         $res=carwashClass::$monPdo->query($req);
         $lesArticles=$res->fetchAll();
         return $lesArticles;
@@ -70,7 +70,7 @@ class carwashClass
 
     public function getPrestations()
     {
-        $req= "select * from articles where typeArticle= PE";
+        $req= "select * from article where typeArticle= prestation";
         $res=carwashClass::$monPdo->query($req);
         $lesArticles=$res->fetch();
         return $lesArticles;
@@ -86,7 +86,7 @@ class carwashClass
     }
 
     public function CreerArticle($imageArticle, $libelleArticle, $descriptionArticle, $prixArticle, $typeArticle){
-        $req= "INSERT INTO articles (imageArticle, libelleArticle, descriptionArticle, prixArticle, typeArticle) VALUES ('$imageArticle', '$libelleArticle', '$descriptionArticle', '$prixArticle', '$typeArticle');";
+        $req= "INSERT INTO article (imageArticle, libelleArticle, descriptionArticle, prixArticle, typeArticle) VALUES ('$imageArticle', '$libelleArticle', '$descriptionArticle', '$prixArticle', '$typeArticle');";
         $res=carwashClass::$monPdo->prepare($req);
         $res->execute();
         return $res;
@@ -95,7 +95,7 @@ class carwashClass
     // MODIFIER UN ARTICLE
     public function UpdateArticle($idArticle, $imageArticle, $libelleArticle, $descriptionArticle, $prixArticle ,$typeArticle)
     {
-        $req="UPDATE articles SET imageArticle= '$imageArticle', libelleArticle= '$libelleArticle', descriptionArticle= '$descriptionArticle', prixArticle= '$prixArticle, 'typeArticle= '$typeArticle' WHERE idArticle= '$idArticle';";
+        $req="UPDATE article SET imageArticle= '$imageArticle', libelleArticle= '$libelleArticle', descriptionArticle= '$descriptionArticle', prixArticle= '$prixArticle, 'typeArticle= '$typeArticle' WHERE idArticle= '$idArticle';";
         $res=carwashClass::$monPdo->prepare($req);
         $res->execute();
         return $res;
@@ -103,7 +103,7 @@ class carwashClass
 
     public function getPanier()
     {
-        $req="SELECT * FROM panier INNER JOIN articles ON articles.idArticle=panier.idArticle;";
+        $req="SELECT * FROM panier INNER JOIN articles ON article.idArticle=panier.idArticle;";
         $res=carwashClass::$monPdo->prepare($req);
         $res->execute();
         return $res;

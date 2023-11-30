@@ -11,7 +11,7 @@
     {
         case 'afficherPrestation':
             {
-                $leType="PE";
+                $leType="prestation";
                 $lesArticles=$pdo->getArticleSelonType($leType);
                 include('VUES/v_listePresta.php');
                 break;
@@ -19,7 +19,7 @@
 
         case 'afficherProduit':
             {
-                $leType= "PO";
+                $leType= "produit";
                 $lesArticles=$pdo->getArticleSelonType($leType);
                 include('VUES/v_listeProduits.php');
                 break;
